@@ -9,13 +9,18 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import androidx.lifecycle.viewModelScope
 import com.example.shoppingapp.store.domain.Result
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ProductViewModel(
+
+@HiltViewModel
+class ProductViewModel @Inject constructor(
     private val repository: ProductRepository
 ): ViewModel() {
+
     private val _products = MutableStateFlow<List<Product>>(emptyList())
     val product = _products.asStateFlow()
 

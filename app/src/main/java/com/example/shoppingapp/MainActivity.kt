@@ -34,6 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import coil.compose.AsyncImagePainter
@@ -45,24 +46,28 @@ import com.example.shoppingapp.store.domain.model.Product
 import com.example.shoppingapp.store.presentation.ProductViewModel
 import com.example.shoppingapp.store.presentation.product_screen.ProductScreen
 import com.example.shoppingapp.ui.theme.ShoppingAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    val viewModel by viewModels<ProductViewModel>(
-        factoryProducer = {
-            object : ViewModelProvider.Factory {
-                override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                    return ProductViewModel(ProductRepositoryImpl(RetrofitInstance.api)) as T
-                }
-            }
-        }
-    )
+//    private val viewModel by viewModels<ProductViewModel>(
+//        factoryProducer = {
+//            object : ViewModelProvider.Factory {
+//                override fun <T : ViewModel> create(modelClass: Class<T>): T {
+//                    return ProductViewModel(ProductRepositoryImpl(RetrofitInstance.api)) as T
+//                }
+//            }
+//        }
+//    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ShoppingAppTheme {
+                val viewModel = hiltViewModel<ProductViewModel>()
+
                 val context = this
                 val productList = viewModel.product.collectAsState().value
 

@@ -16,23 +16,22 @@ class ProductRepositoryImpl constructor(
     override suspend fun getProducts(): Flow<Result<List<Product>>> {
         return flow {
             val productsFromApi = try {
-                Log.d("io", "p")
                 productApi.getProducts()
 
             } catch (e: IOException) {
-                Log.d("io", "io")
+                Log.d("AAAA", "IOException")
                 e.printStackTrace()
                 emit(Result.Error(message = "Couldn't load data"))
                 return@flow
 
             } catch (e: HttpException) {
-                Log.d("http", "http")
+                Log.d("AAAA", "HTTP")
                 e.printStackTrace()
                 emit(Result.Error(message = "Couldn't load data"))
                 return@flow
 
             } catch (e: Exception) {
-                Log.d("aaa", e.toString())
+                Log.d("AAAA", e.toString())
                 e.printStackTrace()
                 emit(Result.Error(message = "Couldn't load data"))
                 return@flow
