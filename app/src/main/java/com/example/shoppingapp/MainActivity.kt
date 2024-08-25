@@ -56,40 +56,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ShoppingAppTheme {
-                val viewModel = hiltViewModel<ProductViewModel>()
-
-                val context = this
-                val productList = viewModel.product.collectAsState().value
-
-                LaunchedEffect(key1 = viewModel.showErrorToastChannel) {
-                    viewModel.showErrorToastChannel.collectLatest { show ->
-                        if (show) {
-                            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-
-                if (productList.isEmpty()) {
-                    Box(
-                        modifier = Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        CircularProgressIndicator()
-                    }
-                } else {
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        contentPadding = PaddingValues(16.dp)
-                    ) {
-                        items(productList.size) {
-                            ProductCard(
-                                product = productList[it]
-                            )
-                            Spacer(modifier = Modifier.height(16.dp))
-                        }
-                    }
-                }
+                NavigationBar()
             }
         }
     }
