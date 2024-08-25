@@ -1,5 +1,6 @@
 package com.example.shoppingapp.store.presentation.product_screen
 
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Box
@@ -53,7 +54,7 @@ fun ProductScreen() {
         ) {
             items(productList.size) {
                 ProductCard(
-                    product = productList[it]
+                    product = productList[it],
                 )
                 Spacer(modifier = Modifier.height(16.dp))
             }

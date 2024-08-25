@@ -8,7 +8,6 @@ import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -16,12 +15,12 @@ import androidx.navigation.compose.rememberNavController
 import com.PratikFagadiya.smoothanimationbottombar.model.SmoothAnimationBottomBarScreens
 import com.PratikFagadiya.smoothanimationbottombar.properties.BottomBarProperties
 import com.PratikFagadiya.smoothanimationbottombar.ui.SmoothAnimationBottomBar
+import com.example.shoppingapp.store.presentation.profile_screen.ProfileScreen
 import com.example.shoppingapp.store.presentation.product_screen.ProductScreen
 import com.example.shoppingapp.util.Routes
 
 @Composable
 fun NavigationBar() {
-
     val navController = rememberNavController()
     val currentIndex = rememberSaveable {
         mutableIntStateOf(0)

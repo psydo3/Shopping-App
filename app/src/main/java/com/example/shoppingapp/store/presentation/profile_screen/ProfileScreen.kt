@@ -1,4 +1,4 @@
-package com.example.shoppingapp
+package com.example.shoppingapp.store.presentation.profile_screen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
