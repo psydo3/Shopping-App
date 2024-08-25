@@ -14,11 +14,12 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import javax.inject.Named
 
 
 @HiltViewModel
 class ProductViewModel @Inject constructor(
-    private val repository: ProductRepository
+    @Named("productRepository") private val repository: ProductRepository
 ): ViewModel() {
 
     private val _products = MutableStateFlow<List<Product>>(emptyList())
