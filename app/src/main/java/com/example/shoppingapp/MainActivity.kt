@@ -45,23 +45,13 @@ import com.example.shoppingapp.store.data.repository.ProductRepositoryImpl
 import com.example.shoppingapp.store.domain.model.Product
 import com.example.shoppingapp.store.presentation.ProductViewModel
 import com.example.shoppingapp.store.presentation.product_screen.ProductScreen
+import com.example.shoppingapp.store.presentation.product_screen.components.ProductCard
 import com.example.shoppingapp.ui.theme.ShoppingAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
-//    private val viewModel by viewModels<ProductViewModel>(
-//        factoryProducer = {
-//            object : ViewModelProvider.Factory {
-//                override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//                    return ProductViewModel(ProductRepositoryImpl(RetrofitInstance.api)) as T
-//                }
-//            }
-//        }
-//    )
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -93,7 +83,7 @@ class MainActivity : ComponentActivity() {
                         contentPadding = PaddingValues(16.dp)
                     ) {
                         items(productList.size) {
-                            ProductItem(
+                            ProductCard(
                                 product = productList[it]
                             )
                             Spacer(modifier = Modifier.height(16.dp))
@@ -102,48 +92,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
-
-@Composable
-fun ProductItem(product: Product) {
-    val imageState = rememberAsyncImagePainter(
-        model = ImageRequest.Builder(LocalContext.current)
-            .data(product.image)
-            .size(Size.ORIGINAL).build()
-    ).state
-
-    Column(
-        modifier = Modifier
-            .clip(RoundedCornerShape(20.dp))
-            .height(300.dp)
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.primaryContainer)
-    ) {
-
-        if (imageState is AsyncImagePainter.State.Error) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator()
-            }
-        }
-
-        if (imageState is AsyncImagePainter.State.Success) {
-            Image(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp),
-                painter = imageState.painter,
-                contentDescription = product.image,
-                contentScale = ContentScale.Crop
-            )
-        }
-
-        Spacer(modifier = Modifier.height(6.dp))
-
     }
 }
