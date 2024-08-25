@@ -8,6 +8,7 @@ import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -30,12 +31,12 @@ fun NavigationBar() {
         SmoothAnimationBottomBarScreens(
             Routes.productScreen,
             "Store",
-            R.drawable.ic_launcher_foreground
+            R.drawable.cart,
         ),
         SmoothAnimationBottomBarScreens(
             Routes.profileScreen,
             "Profile",
-            R.drawable.ic_launcher_foreground
+            R.drawable.person
         )
     )
 
@@ -47,7 +48,8 @@ fun NavigationBar() {
             bottomBarProperties = BottomBarProperties(),
             onSelectItem = {
                 Log.i("SELECTED_ITEM", "onCreate: Selected Item ${it.name}")
-            })
+            }
+        )
     }) { innerPadding ->
         Modifier.padding(innerPadding)
         ScreenNavigationConfiguration(navController, currentIndex)
@@ -59,11 +61,11 @@ fun ScreenNavigationConfiguration(
     navController: NavHostController,
     currentIndex: MutableIntState
 ) {
-    NavHost(navController = navController, startDestination = Routes.productScreen){
-        composable(Routes.productScreen){
+    NavHost(navController = navController, startDestination = Routes.productScreen) {
+        composable(Routes.productScreen) {
             ProductScreen()
         }
-        composable(Routes.profileScreen){
+        composable(Routes.profileScreen) {
             ProfileScreen()
         }
     }
