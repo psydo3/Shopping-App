@@ -1,4 +1,4 @@
-package com.example.shoppingapp.store.domain.repository
+package com.example.shoppingapp.store.presentation
 
 import com.example.shoppingapp.store.domain.model.Cart
 

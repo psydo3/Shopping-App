@@ -1,6 +1,7 @@
 package com.example.shoppingapp.store.presentation
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import com.example.shoppingapp.store.domain.model.Product
 import com.example.shoppingapp.store.domain.repository.ProductRepository
 import kotlinx.coroutines.channels.Channel
@@ -23,7 +24,10 @@ class ProductViewModel @Inject constructor(
 ): ViewModel() {
 
     private val _products = MutableStateFlow<List<Product>>(emptyList())
-    val product = _products.asStateFlow()
+    val products = _products.asStateFlow()
+
+    private val _product = MutableStateFlow<Product?>(null)
+    val product = _product.asStateFlow()
 
     private val _showErrorToastChannel = Channel<Boolean>()
     val showErrorToastChannel = _showErrorToastChannel.receiveAsFlow()

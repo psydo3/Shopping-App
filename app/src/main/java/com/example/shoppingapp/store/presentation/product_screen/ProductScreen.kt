@@ -1,7 +1,9 @@
 package com.example.shoppingapp.store.presentation.product_screen
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -25,23 +27,24 @@ import com.example.shoppingapp.store.presentation.product_screen.components.Prod
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
-fun ProductScreen() {
-
-    val viewModel = hiltViewModel<ProductViewModel>()
-    val productList = viewModel.product.collectAsState().value
-
-    val cartViewModel = hiltViewModel<CartViewModel>()
+fun ProductScreen(
+    productViewModel: ProductViewModel,
+    cartViewModel: CartViewModel
+) {
+    val productList = productViewModel.products.collectAsState().value
     val cartState by cartViewModel.state.collectAsState()
 
     val context = LocalContext.current
 
-    LaunchedEffect(key1 = viewModel.showErrorToastChannel) {
-        viewModel.showErrorToastChannel.collectLatest { show ->
+    LaunchedEffect(key1 = productViewModel.showErrorToastChannel) {
+        productViewModel.showErrorToastChannel.collectLatest { show ->
             if (show) {
                 Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
+
 
     if (productList.isEmpty()) {
         Box(
