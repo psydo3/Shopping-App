@@ -1,6 +1,6 @@
-package com.example.shoppingapp.store.domain.repository
+package com.example.shoppingapp.store.presentation
 
-import com.example.shoppingapp.store.data.local.Cart
+import com.example.shoppingapp.store.domain.model.Cart
 
 sealed interface CartEvent {
 
