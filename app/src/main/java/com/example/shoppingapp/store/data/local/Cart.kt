@@ -1,4 +1,4 @@
-package com.example.shoppingapp.store.domain.model
+package com.example.shoppingapp.store.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

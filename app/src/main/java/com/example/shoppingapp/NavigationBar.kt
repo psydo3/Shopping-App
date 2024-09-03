@@ -5,8 +5,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableIntState
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -18,8 +16,8 @@ import androidx.navigation.compose.rememberNavController
 import com.PratikFagadiya.smoothanimationbottombar.model.SmoothAnimationBottomBarScreens
 import com.PratikFagadiya.smoothanimationbottombar.properties.BottomBarProperties
 import com.PratikFagadiya.smoothanimationbottombar.ui.SmoothAnimationBottomBar
-import com.example.shoppingapp.store.presentation.CartViewModel
-import com.example.shoppingapp.store.presentation.ProductViewModel
+import com.example.shoppingapp.store.presentation.view_models.CartViewModel
+import com.example.shoppingapp.store.presentation.view_models.ProductViewModel
 import com.example.shoppingapp.store.presentation.profile_screen.ProfileScreen
 import com.example.shoppingapp.store.presentation.product_screen.ProductScreen
 import com.example.shoppingapp.util.Routes

@@ -1,7 +1,6 @@
-package com.example.shoppingapp.store.presentation
+package com.example.shoppingapp.store.presentation.view_models
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import com.example.shoppingapp.store.domain.model.Product
 import com.example.shoppingapp.store.domain.repository.ProductRepository
 import kotlinx.coroutines.channels.Channel
