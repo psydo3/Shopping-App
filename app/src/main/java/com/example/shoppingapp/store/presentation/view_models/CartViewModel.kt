@@ -1,9 +1,11 @@
-package com.example.shoppingapp.store.presentation
+package com.example.shoppingapp.store.presentation.view_models
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.shoppingapp.store.domain.model.Cart
+import com.example.shoppingapp.store.data.local.Cart
 import com.example.shoppingapp.store.data.local.CartDatabase
+import com.example.shoppingapp.store.presentation.CartEvent
+import com.example.shoppingapp.store.presentation.CartState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
